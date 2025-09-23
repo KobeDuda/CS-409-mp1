@@ -11,3 +11,10 @@ import './css/main.scss';
 
 // Scripts
 import './js/main.js';
+
+
+
+var myFunction = function(x, y) {
+    a = document.getElementsByClassName("skrumple");
+}
+
