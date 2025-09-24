@@ -29,21 +29,40 @@ prevButton.addEventListener('click', () => {
 document.querySelectorAll('.carousel').forEach(initCarousel);
 
 
-// Navbar resizing
-
+// Navbar resizing and element highlighting
 navbar = document.getElementById("navbar");
 navbar_children = navbar.children;
+
+mysteries = document.getElementsByClassName("mystery-title");
+
+
 window.onscroll = function() {onScroll();};
 onScroll = function() {
+    // Position indicator
+    let selected_idx = -1;
+    for(let i = 0; i < mysteries.length; i++) {
+        let absolute_pos = mysteries[i].getBoundingClientRect().y + window.scrollY;
+        if (window.scrollY + window.innerHeight / 2 > absolute_pos) {
+            selected_idx = i;
+        }
+    }
+    
     if (window.scrollY > 50) {
         navbar.style.height = "110px";
         for (let i = 0; i < navbar_children.length; i++) {
-            navbar_children[i].style.fontSize = "25px"
+            navbar_children[i].style.fontSize = "25px";
+            navbar_children[i].classList.remove('navbar-current');
         }
     } else {
         navbar.style.height = "80px";
         for (let i = 0; i < navbar_children.length; i++) {
-            navbar_children[i].style.fontSize = "15px"
+            navbar_children[i].style.fontSize = "15px";
+            navbar_children[i].classList.remove('navbar-current');
         }
     }
+
+    console.log(selected_idx);
+    
+    if (selected_idx >= 0) {navbar_children[selected_idx].classList.add('navbar-current');}
+
 }
