@@ -1,5 +1,4 @@
 /* Your JS here. */
-console.log('Hello World!')
 
 
 // Carousel stuff
@@ -60,9 +59,24 @@ onScroll = function() {
             navbar_children[i].classList.remove('navbar-current');
         }
     }
-
-    console.log(selected_idx);
     
     if (selected_idx >= 0) {navbar_children[selected_idx].classList.add('navbar-current');}
 
 }
+
+
+// Modal stuff
+
+var modal_bkg = document.getElementById("guide");
+var modal_content = document.getElementById("guide-content");
+
+
+// Keeping this simple for now, maybe add an animation later when there's more time
+var modal_btn = document.getElementById("guide-button");
+modal_btn.addEventListener('click', () => {
+    modal_bkg.style.display = "block";
+});
+
+modal_bkg.addEventListener('click', () => {
+    modal_bkg.style.display = "none";
+})
